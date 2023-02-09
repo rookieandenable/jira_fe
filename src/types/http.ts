@@ -21,3 +21,24 @@ export interface ProjectListType {
   personId: number;
   enshrine: boolean;
 }
+
+export interface EpicListType {
+  id: number;
+  name: string;
+  projectId: number;
+  created: number;
+  end: number;
+}
+
+export interface KanbanChildrenType {
+  name: string;
+  typeId: number;
+  id: number
+}
+
+export interface KanbanListType {
+  name: string;
+  projectId: number;
+  id: number;
+  children: KanbanChildrenType[]
+}

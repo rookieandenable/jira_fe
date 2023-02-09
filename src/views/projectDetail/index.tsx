@@ -6,9 +6,9 @@ import Header from "../../components/header";
 import { HomeContainer } from "../../components/lib";
 import Epic from "./epic";
 import Kanban from "./kanban";
+import _ from 'loadsh'
 
 export default function ProjectDetail() {
-  const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate()
 
   type MenuItem = Required<MenuProps>['items'][number];
@@ -48,6 +48,7 @@ export default function ProjectDetail() {
             mode="vertical"
             items={items}
             onClick={clickMenu}
+            style={{ width: '100%' }}
           />
         </Aside>
         <Main>

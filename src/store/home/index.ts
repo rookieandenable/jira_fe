@@ -4,14 +4,14 @@ import { fetchCount } from './apiHome';
 import { MembersType, ProjectListType } from '../../types/http';
 import api from '../../api';
 
-export interface CounterState {
+export interface HomeStateType {
   value: number;
   status: 'idle' | 'loading' | 'failed';
   membersList: MembersType[];
   projectsList: ProjectListType[];
 }
 
-const initialState: CounterState = {
+const initialState: HomeStateType = {
   value: 0,
   status: 'idle',
   membersList: [],

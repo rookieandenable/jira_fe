@@ -11,26 +11,6 @@ interface MainPageProps {
   setLoginBtn: (value: boolean) => void
 }
 
-const UnAuthorizedPage: React.FC = () => {
-  const [loginBtn, setLoginBtn] = useState(false)
-
-  return (
-    <Container>
-      <Header />
-      <Background />
-      <ShadowCard>
-        <Title>
-          { loginBtn ? 'Login' : 'Register' }
-        </Title>
-        <MainPage 
-          loginBtn={loginBtn}
-          setLoginBtn={setLoginBtn}
-        />
-      </ShadowCard>
-    </Container>
-  )
-}
-
 const MainPage: React.FC<MainPageProps> = (props) => {
   const { loginBtn, setLoginBtn } = props
   const navigate = useNavigate()
@@ -38,7 +18,7 @@ const MainPage: React.FC<MainPageProps> = (props) => {
 
   const onFinish = async (values: SubmitProps) => {
     const res  = loginBtn ? await api.login(values) : await api.registry(values)
-    if (res?.data?.code === 200) {
+    if (res?.code === 200) {
       const username = res?.data?.username
       sessionStorage.setItem('username', username)
       navigate('/home')
@@ -46,7 +26,7 @@ const MainPage: React.FC<MainPageProps> = (props) => {
     }
     messageApi.open({
       type: 'error',
-      content: res?.data?.msg
+      content: res?.msg
     })
   };
 
@@ -105,5 +85,25 @@ const MainPage: React.FC<MainPageProps> = (props) => {
     </>
   );
 };
+
+const UnAuthorizedPage: React.FC = () => {
+  const [loginBtn, setLoginBtn] = useState(false)
+
+  return (
+    <Container>
+      <Header />
+      <Background />
+      <ShadowCard>
+        <Title>
+          { loginBtn ? 'Login' : 'Register' }
+        </Title>
+        <MainPage 
+          loginBtn={loginBtn}
+          setLoginBtn={setLoginBtn}
+        />
+      </ShadowCard>
+    </Container>
+  )
+}
 
 export default UnAuthorizedPage;

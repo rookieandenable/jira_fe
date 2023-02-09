@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Form, Input, message, Modal, Rate, Space, Table, Tag } from 'antd';
+import { Button, Form, Input, message, Modal, Rate, Space, Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import api from '../../api';
 import { ProjectListType } from '@/types/http'
@@ -24,12 +24,7 @@ const List: React.FC = () => {
     form.setFieldValue('id', item.id)
     setSel(item.personId)
   };
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+
   const submit = async (value) => {
     if (!value.personId) {
       value.personId = 5
@@ -98,7 +93,7 @@ const List: React.FC = () => {
       title: '名称',
       dataIndex: 'name',
       key: 'name',
-      render: (_, record) => <Link to={`/home/${record.id}`}>{record.name}</Link>,
+      render: (_, record) => <Link to={ `/home/${record.id}` }>{ record.name }</Link>,
     },
     {
       title: '部门',
@@ -139,8 +134,8 @@ const List: React.FC = () => {
       <Modal title="编辑项目"
         maskClosable={false} 
         open={isModalOpen} 
-        onOk={handleOk} 
-        onCancel={handleCancel}
+        onOk={() => setIsModalOpen(false)} 
+        onCancel={() => setIsModalOpen(false)}
         footer={null}
       >
         <Form
