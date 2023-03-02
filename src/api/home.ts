@@ -1,6 +1,5 @@
 import http from "@/utils/http";
 import { MembersType, ProjectListType, EpicListType } from '@/types/http'
-import { KanbanListType } from "../types/http";
 
 export default {
   getProjectList() {
@@ -62,27 +61,6 @@ export default {
   deleteEpic(params) {
     return http({
       url: '/list/deleteTask',
-      method: 'post',
-      data: params
-    })
-  },
-  getKanbanList(params) {
-    return http<KanbanListType[]>({
-      url: '/list/getKanbanList',
-      method: 'get',
-      params
-    })
-  },
-  kanbanMoveColumn(params) {
-    return http({
-      url: '/list/moveColumn',
-      method: 'post',
-      data: params
-    })
-  },
-  kanbanMoveRow(params) {
-    return http({
-      url: '/list/moveRow',
       method: 'post',
       data: params
     })

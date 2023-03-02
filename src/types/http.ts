@@ -33,12 +33,14 @@ export interface EpicListType {
 export interface KanbanChildrenType {
   name: string;
   typeId: number;
-  id: number
+  id: number;
+  sort: number;
 }
 
 export interface KanbanListType {
   name: string;
   projectId: number;
   id: number;
+  sort: number;
   children: KanbanChildrenType[]
 }

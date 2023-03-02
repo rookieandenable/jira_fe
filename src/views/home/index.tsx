@@ -58,7 +58,7 @@ export default function Home() {
       <Main>
         <Container>
           <Row marginBottom={2} between={true}>
-            <h1>项目列表</h1>
+            <h2>项目列表</h2>
             <ButtonNoPadding type="link" onClick={showModal}>
               创建项目
             </ButtonNoPadding>

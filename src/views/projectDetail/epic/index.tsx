@@ -56,7 +56,7 @@ const Epic: React.FC = () => {
     <Container>
       { contextHolder }
       <Row between={true}>
-        <h1>{data?.[0]?.name}任务组</h1>
+        <h2>{data?.[0]?.name}任务组</h2>
         <Button type="link" size="large" onClick={() => setOpen(true)}>创建任务组</Button>
       </Row>
       <List

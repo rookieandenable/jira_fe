@@ -3,39 +3,73 @@ import { KanbanListType } from "../../../types/http"
 import styled from "styled-components"
 import { Row } from "../../../components/lib"
 import { Drag, Drop, DropChild } from "../../../components/drag-and-drop"
+import { App, Button, Dropdown } from "antd"
+import api from "../../../api"
+
+
+const DropContent: React.FC<{ id: number; list: () => Promise<void> }> = ({ id, list }) => {
+  const { message } = App.useApp()
+
+  const deleteGroup = async (id) => {
+    const obj = {
+      id
+    }
+    const res = await api.deleteKanbanGroup(obj)
+    if (res.code === 200) {
+      message.success(res.msg || '操作成功')
+      list()
+    }
+  }
+  const items = [
+    {
+      key: 1,
+      label: <Button type="link" size="small" onClick={() => deleteGroup(id)}>删除</Button>
+    },
+    {
+      key: 2,
+      label: <Button type="link" size="small">编辑</Button>
+    },
+  ]
+
+  return (
+    <Dropdown placement="bottom" menu={{ items }}>
+      <span>...</span>
+    </Dropdown>
+  )
+}
 
 export const KanbanColumn = React.forwardRef<
   HTMLDivElement,
-  { kanban: KanbanListType }
->(({ kanban, ...props }, ref) => {
+  { kanban: KanbanListType; list: () => Promise<void> }
+>(({ kanban, list, ...props }, ref) => {
 
   return (
     <Container { ...props } ref={ref}>
       <Row between={true}>
-        <h3>待开发</h3>
-        <span>...</span>
+        <h4>{kanban.name}</h4>
+        <DropContent id={kanban.id} list={list} />
       </Row>
       <TasksContainer>
         <Drop
           type="ROW"
           direction="vertical"
-          droppableId={String(kanban.id)}
+          droppableId={kanban.id + ''}
         >
           <DropChild style={{ minHeight: '1rem' }}>
             {
-              kanban.children.map((item, index) => (
+              kanban.children.map((item) => (
                 <Drag
                   key={item.id}
-                  index={index}
-                  draggableId={ 'task' + item.id }
+                  index={item.sort}
+                  draggableId={ item.id + 'task' }
                 >
-                  <div><h3>{item.name}</h3></div>
+                  <div><h5>{item.name}</h5></div>
                 </Drag>
               ))
             }
           </DropChild>
         </Drop>
-        <div>创建事务</div>
+        <Button type="link">创建事务</Button>
       </TasksContainer>
     </Container>
   )

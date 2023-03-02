@@ -6,7 +6,6 @@ import Header from "../../components/header";
 import { HomeContainer } from "../../components/lib";
 import Epic from "./epic";
 import Kanban from "./kanban";
-import _ from 'loadsh'
 
 export default function ProjectDetail() {
   const navigate = useNavigate()
@@ -78,4 +77,5 @@ const Main = styled.div`
   box-shadow: -5px 0 5px -5px rgba(0, 0, 0, 0.1);
   display: flex;
   overflow: hidden;
+  padding-right: 30px;
 `;

@@ -4,17 +4,22 @@ import { Routes, Route } from 'react-router'
 import UnAuthorizedPage from './views/unauthorized'
 import Home from './views/home'
 import ProjectDetail from './views/projectDetail'
+import { App } from 'antd'
 
-const App = () => {
-  return (
-    <Router>
-      <Routes>
-        <Route index element={ <UnAuthorizedPage /> } />
-        <Route path='/home' element={ <Home /> } />
-        <Route path='/home/:projectId/*' element={ <ProjectDetail /> } />
-      </Routes>
-    </Router>
-  )
-}
+const Page: React.FC = () => (
+  <Router>
+    <Routes>
+      <Route index element={ <UnAuthorizedPage /> } />
+      <Route path='/home' element={ <Home /> } />
+      <Route path='/home/:projectId/*' element={ <ProjectDetail /> } />
+    </Routes>
+  </Router>
+)
 
-export default App
+const MyApp: React.FC = () => (
+  <App>
+    <Page />
+  </App>
+)
+
+export default MyApp
