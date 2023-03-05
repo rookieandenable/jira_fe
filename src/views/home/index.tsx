@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import Header from "../../components/header";
-import { ButtonNoPadding, Container, HomeContainer, Row } from "../../components/lib";
+import Header from "@/components/header";
+import { ButtonNoPadding, Container, HomeContainer, Row } from "@/components/lib";
 import Search from './search'
 import List from './list'
-import { useAppDispatch } from "../../hooks/store";
-import { getMembers, getProjects } from "../../store/home";
+import { useAppDispatch } from "@/hooks/store";
+import { getMembers, getProjects } from "@/store/home";
 import { Button, Form, Input, message, Modal } from "antd";
-import BaseSelect from "../../components/baseSelect";
-import api from "../../api";
+import BaseSelect from "@/components/baseSelect";
+import api from "@/api";
 
 export default function Home() {
   const [form] = Form.useForm()

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form, Input, message, Modal, Rate, Space, Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import api from '../../api';
+import api from '@/api';
 import { ProjectListType } from '@/types/http'
-import { useAppDispatch, useAppSelector } from '../../hooks/store';
-import { getProjects, homeState } from '../../store/home';
-import BaseSelect from '../../components/baseSelect';
+import { useAppDispatch, useAppSelector } from '@/hooks/store';
+import { getProjects, homeState } from '@/store/home';
+import BaseSelect from '@/components/baseSelect';
 import { Link } from 'react-router-dom';
 
 const List: React.FC = () => {

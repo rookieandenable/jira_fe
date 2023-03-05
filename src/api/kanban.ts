@@ -1,5 +1,5 @@
 import http from '@/utils/http';
-import { KanbanListType } from '../types/http';
+import { KanbanListType } from '@/types/http';
 
 export default {
   getKanbanList(params) {
@@ -33,6 +33,27 @@ export default {
   deleteKanbanGroup(params) {
     return http({
       url: '/list/deleteKanbanColumn',
+      method: 'post',
+      data: params,
+    })
+  },
+  createKanbanItem(params) {
+    return http({
+      url: '/list/createKanbanItem',
+      method: 'post',
+      data: params,
+    })
+  },
+  updateKanbanItem(params) {
+    return http({
+      url: '/list/updateKanbanItem',
+      method: 'post',
+      data: params,
+    })
+  },
+  deleteKanbanItem(params) {
+    return http({
+      url: '/list/deleteKanbanItem',
       method: 'post',
       data: params,
     })

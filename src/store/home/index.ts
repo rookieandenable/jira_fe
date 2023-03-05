@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState, AppThunk } from '@/store';
 import { fetchCount } from './apiHome';
-import { MembersType, ProjectListType } from '../../types/http';
-import api from '../../api';
+import { MembersType, ProjectListType } from '@/types/http';
+import api from '@/api';
 
 export interface HomeStateType {
   value: number;
@@ -84,7 +84,7 @@ export const homeState = (state: RootState) => state.home;
 export const incrementIfOdd =
   (amount: number): AppThunk =>
   (dispatch, getState) => {
-    const currentValue = homeState(getState());
+    const currentValue = homeState(getState()) as any;
     if (currentValue % 2 === 1) {
       dispatch(incrementByAmount(amount));
     }

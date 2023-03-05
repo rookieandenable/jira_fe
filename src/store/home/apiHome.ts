@@ -1,4 +1,4 @@
-import api from "../../api";
+import api from "@/api";
 
 export function fetchCount(amount = 1) {
   return new Promise<{ data: number }>((resolve) =>

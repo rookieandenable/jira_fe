@@ -1,5 +1,5 @@
 import http from "@/utils/http";
-import { SubmitProps } from "../types";
+import { SubmitProps } from "@/types";
 
 export default {
   login(params: SubmitProps) {

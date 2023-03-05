@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row } from "../../../components/lib";
+import { Container, Row } from "@/components/lib";
 import { Button, Form, Input, List, Modal, message } from "antd";
-import { useAppSelector } from "../../../hooks/store";
-import { homeState } from "../../../store/home";
+import { useAppSelector } from "@/hooks/store";
+import { homeState } from "@/store/home";
 import { useLocation } from "react-router";
-import api from "../../../api";
-import { EpicListType } from "../../../types/http";
+import api from "@/api";
+import { EpicListType } from "@/types/http";
 
 const Epic: React.FC = () => {
   const { pathname } = useLocation()

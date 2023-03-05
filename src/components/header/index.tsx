@@ -4,9 +4,9 @@ import { ButtonNoPadding, Row } from "../lib";
 // import { ReactComponent as SoftWareLogo } from '@/assets/software-logo.svg'
 import SoftWareLogo from '@/components/softWareLogo'
 import { Button, Divider, Dropdown, List, Popover, Typography } from "antd";
-import { useAppSelector } from "../../hooks/store";
-import { homeState } from "../../store/home";
-import { MembersType, ProjectListType } from "../../types/http";
+import { useAppSelector } from "@/hooks/store";
+import { homeState } from "@/store/home";
+import { MembersType, ProjectListType } from "@/types/http";
 import { useNavigate } from "react-router";
 
 const ProjectPopover = () => {
@@ -40,12 +40,12 @@ const UserPopover = () => {
         dataSource={state.membersList}
         renderItem = {(item: MembersType) => (
           <List.Item>{item.name}</List.Item>
-        )}
-      />
+          )}
+          />
       <Divider />
     </UserPopoverContainer>
   )
-
+  
   return (
     <Popover placement="bottom" content={content} title="组员列表" trigger="hover">
       <Typography.Text>组员</Typography.Text>
@@ -54,11 +54,12 @@ const UserPopover = () => {
 }
 
 const ShowUserInfo = () => {
+  const navigate = useNavigate()
   const items = [
     {
       key: '1',
       label: (
-        <Button type="link">登出</Button>
+        <Button type="link" onClick={() => navigate('/')}>登出</Button>
       )
     }
   ]

@@ -9,7 +9,7 @@ import { App } from 'antd'
 const Page: React.FC = () => (
   <Router>
     <Routes>
-      <Route index element={ <UnAuthorizedPage /> } />
+      <Route index path='/' element={ <UnAuthorizedPage /> } />
       <Route path='/home' element={ <Home /> } />
       <Route path='/home/:projectId/*' element={ <ProjectDetail /> } />
     </Routes>

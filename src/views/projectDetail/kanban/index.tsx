@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Container } from "../../../components/lib";
+import { Container } from "@/components/lib";
 import { useLocation } from "react-router";
-import { useAppSelector } from "../../../hooks/store";
-import { homeState } from "../../../store/home";
+import { useAppSelector } from "@/hooks/store";
+import { homeState } from "@/store/home";
 import styled from "styled-components";
-import { Drag, Drop, DropChild } from "../../../components/drag-and-drop";
+import { Drag, Drop, DropChild } from "@/components/drag-and-drop";
 import { KanbanColumn } from "./column";
 import { DragDropContext } from 'react-beautiful-dnd'
-import api from "../../../api";
-import { KanbanListType } from "../../../types/http";
+import api from "@/api";
+import { KanbanListType } from "@/types/http";
 import { App, Button, Form, Input, Modal } from "antd";
+import { ModalFooter, Pcontent } from "@/styled";
 
 const Kanban: React.FC = () => {
   const { pathname } = useLocation()
@@ -28,8 +29,10 @@ const Kanban: React.FC = () => {
   }, [])
 
   const handleDragEnd = async (item) => {
-    console.log('item ---', item)
     if (item.type === 'COLUMN') {
+      if (item.destination === null) {
+        return
+      }
       const { index: sourceIndex } = item.source
       const { index: destinationIndex } = item.destination
       const draggableId = parseInt(item.draggableId)
@@ -47,6 +50,9 @@ const Kanban: React.FC = () => {
     }
 
     if (item.type === 'ROW') {
+      if (item.destination === null) {
+        return
+      }
       const { index: sourceIndex, droppableId: dropColumnSourceId } = item.source
       const { index: destinationIndex, droppableId: dropColumnDestinationId } = item.destination
       const drapRowsourceId = parseInt(item.draggableId)
@@ -83,7 +89,7 @@ const Kanban: React.FC = () => {
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
       <Container>
-        <h2>{data?.[0]?.name}看板</h2>
+        <Pcontent>{data?.[0]?.name}看板</Pcontent>
         <ColumnsContainer>
           <Drop
             type="COLUMN"
@@ -106,7 +112,7 @@ const Kanban: React.FC = () => {
               }
             </DropChild>
           </Drop>
-          <Button type="link" onClick={() => setOpen(true)}>创建看板</Button>
+          <Button type="link" onClick={() => setOpen(true)}>+创建看板</Button>
 
           <Modal
             title="创建看板"
@@ -144,14 +150,6 @@ const ColumnsContainer = styled.div`
   display: flex;
   overflow-x: scroll;
   flex: 1;
-`
-
-const ModalFooter = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  .cancel {
-    margin-right: 10px;
-  }
 `
 
 export default Kanban

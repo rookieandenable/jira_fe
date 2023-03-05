@@ -1,7 +1,7 @@
 import React from 'react';
 import { Select, SelectProps } from 'antd';
-import { useAppSelector } from '../hooks/store';
-import { homeState } from '../store/home';
+import { useAppSelector } from '@/hooks/store';
+import { homeState } from '@/store/home';
 
 interface BaseSelectProps extends SelectProps {
   setVal?: (value: number) => void;

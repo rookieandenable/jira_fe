@@ -2,8 +2,8 @@ import { Menu, MenuProps } from "antd";
 import React, { useState } from "react";
 import { Route, Routes, useNavigate } from "react-router";
 import styled from "styled-components";
-import Header from "../../components/header";
-import { HomeContainer } from "../../components/lib";
+import Header from "@/components/header";
+import { HomeContainer } from "@/components/lib";
 import Epic from "./epic";
 import Kanban from "./kanban";
 
