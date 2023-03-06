@@ -8,14 +8,16 @@ const path = require("path");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
-  mode: "development",
-  devtool: 'eval-cheap-module-source-map',
+  // mode: "development",
+  mode: "production",
+  // devtool: 'eval-cheap-module-source-map',
+  devtool: 'nosources-source-map',
   devServer: {
     port: 9000,
     open: false,
     proxy: {
       '/api': {
-        target: 'http://127.0.0.1:7001',
+        target: 'http://81.69.30.202:7001',
         changeOrigin: true
       }
     },
@@ -68,6 +70,6 @@ module.exports = {
   output: {
     filename: "[name].js",
     path: path.resolve(__dirname, "dist"),
-    publicPath: '/',
+    publicPath: './',
   },
 };

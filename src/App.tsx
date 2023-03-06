@@ -1,5 +1,6 @@
 import React from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
+// import { BrowserRouter as Router } from 'react-router-dom'
+import { HashRouter as Router } from 'react-router-dom'
 import { Routes, Route } from 'react-router'
 import UnAuthorizedPage from './views/unauthorized'
 import Home from './views/home'
