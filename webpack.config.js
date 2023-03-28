@@ -47,6 +47,10 @@ module.exports = {
         test: /\.(eot|svg|ttf|woff)$/,
         use: {
           loader: "file-loader",
+          options: {
+            outputPath: './svg',
+            publicPath: './svg'
+          }
         },
       },
       {
@@ -65,10 +69,14 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin(
+      {
+        filename: 'css/[name].css',
+      }
+    ),
   ],
   output: {
-    filename: "[name].js",
+    filename: "js/[name].js",
     path: path.resolve(__dirname, "dist"),
     publicPath: './',
   },
