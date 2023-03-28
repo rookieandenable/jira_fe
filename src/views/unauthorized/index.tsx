@@ -95,7 +95,7 @@ const UnAuthorizedPage: React.FC = () => {
       <Background />
       <ShadowCard>
         <Title>
-          { loginBtn ? 'Login' : 'Register' }
+          { loginBtn ? 'Login' : 'Register1' }
         </Title>
         <MainPage 
           loginBtn={loginBtn}
