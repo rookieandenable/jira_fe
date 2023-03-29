@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
 // import { HashRouter as Router } from 'react-router-dom'
 // import { Routes, Route } from 'react-router'
 import UnAuthorizedPage from './views/unauthorized'
@@ -10,17 +10,22 @@ import { App } from 'antd'
 const Page: React.FC = () => (
   <Router basename='/jira_fe/'>
     <Routes>
-      <Route index path='/' element={ <UnAuthorizedPage /> } />
+      <Route path='/' element={ <UnAuthorizedPage /> } />
       <Route path='/home' element={ <Home /> } />
       <Route path='/home/:projectId/*' element={ <ProjectDetail /> } />
     </Routes>
   </Router>
 )
 
-const MyApp: React.FC = () => (
-  <App>
-    <Page />
-  </App>
-)
+const MyApp: React.FC = () => {
+  const navigate = useNavigate()
+
+  return (
+    <App>
+      <Page />
+      <div onClick={() => navigate('/')}>11111</div>
+    </App>
+  )
+}
 
 export default MyApp
