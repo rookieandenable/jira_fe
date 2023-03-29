@@ -49,7 +49,7 @@ module.exports = {
           loader: "file-loader",
           options: {
             outputPath: './svg',
-            publicPath: './svg'
+            name: '[name]_[contenthash:8].[ext]',
           }
         },
       },
@@ -71,12 +71,12 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin(
       {
-        filename: 'css/[name].css',
+        filename: 'css/[name]_[contenthash:8].css',
       }
     ),
   ],
   output: {
-    filename: "js/[name].js",
+    filename: "js/[name]_[chunkhash:8].js",
     path: path.resolve(__dirname, "dist"),
     publicPath: './',
   },
