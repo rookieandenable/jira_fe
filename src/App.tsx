@@ -8,7 +8,7 @@ import ProjectDetail from './views/projectDetail'
 import { App } from 'antd'
 
 const Page: React.FC = () => (
-  <Router basename='/jira_fe/'>
+  <Router>
     <Routes>
       <Route path='/' element={ <UnAuthorizedPage /> } />
       <Route path='/home' element={ <Home /> } />
