@@ -18,12 +18,12 @@ const Page: React.FC = () => (
 )
 
 const MyApp: React.FC = () => {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   return (
     <App>
       <Page />
-      <div onClick={() => navigate('/')}>11111</div>
+      <div>11111</div>
     </App>
   )
 }
