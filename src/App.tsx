@@ -1,14 +1,14 @@
 import React from 'react'
-// import { BrowserRouter as Router } from 'react-router-dom'
-import { HashRouter as Router } from 'react-router-dom'
-import { Routes, Route } from 'react-router'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+// import { HashRouter as Router } from 'react-router-dom'
+// import { Routes, Route } from 'react-router'
 import UnAuthorizedPage from './views/unauthorized'
 import Home from './views/home'
 import ProjectDetail from './views/projectDetail'
 import { App } from 'antd'
 
 const Page: React.FC = () => (
-  <Router>
+  <Router basename='/jira_fe/'>
     <Routes>
       <Route index path='/' element={ <UnAuthorizedPage /> } />
       <Route path='/home' element={ <Home /> } />
